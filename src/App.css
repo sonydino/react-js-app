@@ -8,6 +8,10 @@
   color: green;
 }
 
+.selected{
+  color: grey;
+}
+
 .App-intro {
   font-size: large;
 }

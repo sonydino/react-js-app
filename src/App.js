@@ -59,7 +59,7 @@ class App extends React.Component {
                     </tr>
                   </thead>
                   <tbody id= "tbody" className="text-center">
-                  {Tasks.map(i => <tr>
+                  {Tasks.map(i => <tr className={i.selected ? 'selected' : ''}>
                     <td><input type="checkbox" name="checkbox" onChange={this.checking.bind(this,i)} checked={i.Check}/></td>
                     <td>{i.Title}</td>
                     <td>{i.Priority}</td>
@@ -87,6 +87,7 @@ Add(props) {
     alert("title is required");
     return 0;
   }
+ 
   
   var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
   this.state.Tasks.push(a);
@@ -100,7 +101,6 @@ Add(props) {
   });
   this.setState({Check:this.state.isChecked,Title:null,
     Priority:this.state.Priority})
-
 }
 checking(event){
  let tasks1 = this.state.Tasks;
@@ -109,11 +109,13 @@ checking(event){
   if (event.Title===tasks1[j].Title){
     if(event.Check===false){
       tasks1[j].Check=true;
+      tasks1[j].selected = true;
       this.setState({Tasks:tasks1});
       return 0;
     }
     else{
       tasks1[j].Check=false;
+      tasks1[j].selected = false;
       this.setState({Tasks:tasks1})
       return 0;
     }
