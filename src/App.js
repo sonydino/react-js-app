@@ -85,6 +85,10 @@ Add(props) {
   
   
   var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
+  if(this.state.Title === null){
+    alert("title is required");
+    return 0;
+  }
   this.state.Tasks.push(a);
   this.setState({Check:this.state.isChecked,Title:this.state.Title,
     Priority:this.state.Priority})
