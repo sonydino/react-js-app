@@ -90,6 +90,14 @@ Add(props) {
   
   var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
   this.state.Tasks.push(a);
+  this.state.Tasks.sort(function(a,b){
+    var priority_1=a.Priority.toLowerCase();
+    if(priority_1==='low') priority_1="zzzz";
+    var priority_2=b.Priority.toLowerCase();
+    if(priority_2==='low') priority_2="zzzz";
+    if(priority_1<=priority_2)  return -1;
+    return 1;
+  });
   this.setState({Check:this.state.isChecked,Title:null,
     Priority:this.state.Priority})
 
