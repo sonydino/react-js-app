@@ -13,6 +13,7 @@ class App extends React.Component {
   }
   updateTitle(e){
     this.setState({Title:e.target.value})
+    
   }
   updatePriority(f){
     this.setState({Priority:f.target.value})
@@ -82,15 +83,14 @@ class App extends React.Component {
   }
 
 Add(props) {
-  
-  
-  var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
-  if(this.state.Title === null){
+  if(this.state.Title === null || this.state.Title ===''){
     alert("title is required");
     return 0;
   }
+  
+  var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
   this.state.Tasks.push(a);
-  this.setState({Check:this.state.isChecked,Title:this.state.Title,
+  this.setState({Check:this.state.isChecked,Title:null,
     Priority:this.state.Priority})
 
 }
