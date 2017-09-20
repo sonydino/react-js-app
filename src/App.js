@@ -33,7 +33,7 @@ class App extends React.Component {
       <form className="form-inline">
         <div className="input-group mb-0 mr-sm-0 mb-sm-0">
           <div className="input-group-addon">Title</div>
-          <input type="text" className="form-control" id="text_title" onChange = {this.updateTitle.bind(this)} required />
+          <input ref="input_empty" type="text" className="form-control" id="text_title" onChange = {this.updateTitle.bind(this)} required></input>
         </div>
 
         <label className="mr-sm-2" htmlFor="inlineFormCustomSelect">Priority</label>
@@ -101,6 +101,7 @@ Add(props) {
   });
   this.setState({Check:this.state.isChecked,Title:null,
     Priority:this.state.Priority})
+    this.refs.input_empty.value = '';
 }
 checking(event){
  let tasks1 = this.state.Tasks;
