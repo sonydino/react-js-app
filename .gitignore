@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 /functions
+<<<<<<< HEAD
+=======
+
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
 # testing
 /coverage
 

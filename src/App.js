@@ -34,7 +34,7 @@ class App extends React.Component {
       <form className="form-inline">
         <div className="input-group mb-0 mr-sm-0 mb-sm-0">
           <div className="input-group-addon">Title</div>
-          <input ref="input_empty" type="text" className="form-control" id="text_title" onChange = {this.updateTitle.bind(this)} required></input>
+          <input ref="input_empty" type="text" className="form-control" id="text_title" onChange = {this.updateTitle.bind(this)} required />
         </div>
 
         <label className="mr-sm-2" htmlFor="inlineFormCustomSelect">Priority</label>
@@ -60,7 +60,7 @@ class App extends React.Component {
                     </tr>
                   </thead>
                   <tbody id= "tbody" className="text-center">
-                  {Tasks.map(i => <tr className={i.selected ? 'selected' : ''}>
+                  {Tasks.map(i => <tr>
                     <td><input type="checkbox" name="checkbox" onChange={this.checking.bind(this,i)} checked={i.Check}/></td>
                     <td>{i.Title}</td>
                     <td>{i.Priority}</td>
@@ -88,12 +88,19 @@ Add(props) {
     alert("title is required");
     return 0;
   }
+<<<<<<< HEAD
  
  	const itemRef=firebase.database().ref('Tasks')
   
   var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
 
   itemRef.push(a)
+=======
+  
+  const itemsRef = firebase.database().ref('Tasks')
+  const a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
+  itemsRef.push(a);
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
   this.state.Tasks.push(a);
   this.state.Tasks.sort(function(a,b){
     var priority_1=a.Priority.toLowerCase();
@@ -105,7 +112,8 @@ Add(props) {
   });
   this.setState({Check:this.state.isChecked,Title:null,
     Priority:this.state.Priority})
-    this.refs.input_empty.value = '';
+    this.refs.input_empty.value='';
+
 }
 checking(event){
  let tasks1 = this.state.Tasks;
@@ -114,13 +122,11 @@ checking(event){
   if (event.Title===tasks1[j].Title){
     if(event.Check===false){
       tasks1[j].Check=true;
-      tasks1[j].selected = true;
       this.setState({Tasks:tasks1});
       return 0;
     }
     else{
       tasks1[j].Check=false;
-      tasks1[j].selected = false;
       this.setState({Tasks:tasks1})
       return 0;
     }
