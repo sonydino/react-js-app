@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import firebase from './fire'
 
 class App extends React.Component {
   constructor(props){
@@ -88,8 +89,11 @@ Add(props) {
     return 0;
   }
  
+ 	const itemRef=firebase.database().ref('Tasks')
   
   var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
+
+  itemRef.push(a)
   this.state.Tasks.push(a);
   this.state.Tasks.sort(function(a,b){
     var priority_1=a.Priority.toLowerCase();
