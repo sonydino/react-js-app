@@ -88,33 +88,10 @@ Add(props) {
     alert("title is required");
     return 0;
   }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
- 
- 	const itemRef=firebase.database().ref('Tasks')
-  
-  var a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
-
-  itemRef.push(a)
-=======
   
   const itemsRef = firebase.database().ref('Tasks')
   const a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
   itemsRef.push(a);
->>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
-=======
-  
-  const itemsRef = firebase.database().ref('Tasks')
-  const a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
-  itemsRef.push(a);
->>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
-=======
-  
-  const itemsRef = firebase.database().ref('Tasks')
-  const a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
-  itemsRef.push(a);
->>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
   this.state.Tasks.push(a);
   this.state.Tasks.sort(function(a,b){
     var priority_1=a.Priority.toLowerCase();
