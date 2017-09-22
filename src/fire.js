@@ -4,6 +4,7 @@ import firebase from 'firebase'
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   var config = {
     apiKey: "AIzaSyAPBY01vyrPjkG7ni7t74oYYPHNHC7d8To",
     authDomain: "react-project-7117.firebaseapp.com",
@@ -18,6 +19,8 @@ import firebase from 'firebase'
 =======
 =======
 >>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
+=======
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
     var config = {
     apiKey: "AIzaSyAw0cVmuzj71tYQGBFyZBsRquFaTlD4BpU",
     authDomain: "to-do-list-123.firebaseapp.com",
@@ -29,6 +32,9 @@ import firebase from 'firebase'
   var fire= firebase.initializeApp(config);
   export default fire;
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
+=======
 >>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
 =======
 >>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
