@@ -1,5 +1,17 @@
 {
   "projects": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "default": "react-project-7117"
+=======
     "default": "to-do-list-123"
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
+=======
+    "default": "to-do-list-123"
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
+=======
+    "default": "to-do-list-123"
+>>>>>>> cef585f3d66bbde92632b95d3478e596fe1568aa
   }
 }
