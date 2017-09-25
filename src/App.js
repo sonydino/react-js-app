@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      
       isChecked:false,
       Tasks: [],
       Title: null,
@@ -60,11 +61,12 @@ class App extends React.Component {
                     </tr>
                   </thead>
                   <tbody id= "tbody" className="text-center">
-                  {Tasks.map(i => <tr>
-                    <td><input type="checkbox" name="checkbox" onChange={this.checking.bind(this,i)} checked={i.Check}/></td>
+                  {Tasks.map(i => <tr key={i.id} className={i.Check ? 'selected' : ''}>
+                    <td><input type="checkbox" name="checkbox" onClick={() => this.checking(i)} checked={i.Check}/></td>
                     <td>{i.Title}</td>
                     <td>{i.Priority}</td>
-                    <td><button onClick={this.Deleting.bind(this,i.Title)}>Delete</button></td></tr>)}</tbody>
+                    <td><button onClick={()=>this.Deleting(i.id)}>Delete</button></td></tr>
+                    )}</tbody>
                 </table>
               </div>
             </div>
@@ -82,6 +84,39 @@ class App extends React.Component {
 
     );
   }
+  componentWillMount(){
+      
+      
+  }
+componentDidMount() {
+  const itemsRef = firebase.database().ref('Tasks');
+  itemsRef.on('value', (snapshot) => {
+    let items = snapshot.val();
+    let newState = [];
+    for (let item in items) {
+      newState.push({
+        id: item,
+        Check: items[item].Check,
+         Title: items[item].Title,
+        Priority: items[item].Priority,
+       
+      });
+    }
+      newState.sort(function(a,b){
+    var priority_1=a.Priority.toLowerCase();
+    if(priority_1==='low') priority_1="zzzz";
+    var priority_2=b.Priority.toLowerCase();
+    if(priority_2==='low') priority_2="zzzz";
+    if(priority_1<=priority_2)  return -1;
+    return 1;
+  });
+
+    this.setState({
+      Tasks: newState
+    });
+  });
+
+};
 
 Add(props) {
   if(this.state.Title === null || this.state.Title ===''){
@@ -92,7 +127,8 @@ Add(props) {
   const itemsRef = firebase.database().ref('Tasks')
   const a={Check:this.state.isChecked,Title:this.state.Title,'Priority':this.state.Priority};
   itemsRef.push(a);
-  this.state.Tasks.push(a);
+
+  
   this.state.Tasks.sort(function(a,b){
     var priority_1=a.Priority.toLowerCase();
     if(priority_1==='low') priority_1="zzzz";
@@ -107,6 +143,14 @@ Add(props) {
 
 }
 checking(event){
+  console.log(event);
+    console.log(event.Check);
+    console.log(event.id);
+    
+    var Change= !event.Check;
+    firebase.database().ref('Tasks/').child(event.id)
+        .update({ Check: true });
+
  let tasks1 = this.state.Tasks;
  var j;
  {for(j=0;j<tasks1.length;j++){
@@ -123,9 +167,14 @@ checking(event){
     }
   }
  }}
+
 this.setState({isChecked: !this.state.Tasks});
 }
-Deleting(props,task){
+Deleting(props){
+    console.log(props);
+    const itemRef = firebase.database().ref(`/Tasks/${props}`);
+    itemRef.remove();
+
   let taaskss= this.state.Tasks;
   var i;
   {for(i=0;i<taaskss.length;i++)
@@ -138,6 +187,7 @@ Deleting(props,task){
   this.setState({Tasks:taaskss});
   return 0;
 }}
+
 }}
 }
 export default App;
